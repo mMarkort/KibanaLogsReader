@@ -11,6 +11,7 @@ So... This is instruction how to use and app.
 
 > [!NOTE]
 > Screen with successful authorization
+> 
 > <img width="331" height="269" alt="{2393B199-6929-412B-BCD6-C8A15DF50D6F}" src="https://github.com/user-attachments/assets/98a3f2a7-2cdd-41a6-9df1-e1e22ed12065" />
 
 ### **3. As you saw from above, there is two buttons (Find app version, Get Logs of Subs). Don't look at "Find app version" it do nothing, the  main button is "Get Logs of Subs", click here and you'll get this**
