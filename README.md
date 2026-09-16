@@ -15,5 +15,6 @@ So... This is instruction how to use and app.
 > <img width="331" height="269" alt="{2393B199-6929-412B-BCD6-C8A15DF50D6F}" src="https://github.com/user-attachments/assets/98a3f2a7-2cdd-41a6-9df1-e1e22ed12065" />
 
 ### **3. As you saw from above, there is two buttons (Find app version, Get Logs of Subs). Don't look at "Find app version" it do nothing, the  main button is "Get Logs of Subs", click here and you'll get this**
-<img width="9" height="6" alt="{AC1C27F1-E513-4031-A24C-D62AAF2E8742}" src="https://github.com/user-attachments/assets/cbb284f2-b3f0-4adf-a174-176d24343748" />
+<img width="999" height="706" alt="{47FEDE86-8F81-4042-883D-94EE53E23396}" src="https://github.com/user-attachments/assets/51eedc19-105c-4fbf-9228-07f7fe07b7c1" />
+
 
