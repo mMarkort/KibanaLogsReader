@@ -418,7 +418,7 @@ class GetLogsOfSub(tk.Frame):
 
             dt = datetime.fromisoformat(
                 timestamp.replace("Z", "+00:00")
-            )
+            ).astimezone()
 
             return dt.strftime(
                 "%d.%m.%Y %H:%M:%S"
@@ -1032,7 +1032,7 @@ class GetLogsOfSub(tk.Frame):
             context_menu.add_separator()
 
             context_menu.add_command(
-                label="Open data.info",
+                label="Open Full Logs",
                 command=lambda: self.open_specific_info(
                     row_id
                 )

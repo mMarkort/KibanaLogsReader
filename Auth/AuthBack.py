@@ -33,3 +33,8 @@ class CreateSession:
 
         return response
 
+    def check_etnries(self, LOGIN, PASSWORD, URL):
+        if LOGIN or PASSWORD or URL == "":
+            return False
+        else:
+            return False

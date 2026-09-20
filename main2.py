@@ -24,12 +24,10 @@ class App(tk.Tk):
         container = tk.Frame(self)
         container.pack(fill="both", expand=True)
 
-        self.protocol("WM_DELETE_WINDOW", self.on_close)
-
         # Create forms
         self.forms = {
             "home": Home.HomeForm._homeForm(container, self.show_form, self.auth),
-            "find_version": Settings.SettingsForm.FindAppVersionModel(container, self.show_form, self.auth),
+            "settings": Settings.SettingsForm.SettingsForm(container, self.show_form, self.auth),
             "get_logs": GetLogsForm.getLogs.GetLogsOfSub(container, self.show_form, self.auth),
             "auth": Auth.AuthForm._authorisation(container, self.show_form, self.auth, self.show_status)
         }
@@ -75,19 +73,32 @@ class App(tk.Tk):
         self.forms[form_class].tkraise()
 
     def show_status(self, status):
-        self.forms["home"].statusLabel.config(text=status)
+        self.forms["home"].statusLabel.configure(text=status)
 
     def block_buttons(self, status):
         if not status:
-            self.forms["home"].logsButton.config(state="disable")
-            self.forms["home"].settingsButton.config(state="disable")
+            self.forms["home"].logsButton.configure(state="disabled")
+            #self.forms["home"].settingsButton.config(state="disable")
         else:
-            self.forms["home"].logsButton.config(state="normal")
-            self.forms["home"].settingsButton.config(state="normal")
+            self.forms["home"].logsButton.configure(state="normal")
+            #self.forms["home"].settingsButton.config(state="normal")
 
-    def on_close(self):
-        self.auth.logout()
-        self.destroy()
+def add_placeholder(entry, text):
+    entry.insert(0, text)
+    entry.configure(text_color="gray")
+
+    def focus_in(event):
+        if entry.get() == text:
+            entry.delete(0, tk.END)
+            entry.configure(text_color="black")
+
+    def focus_out(event):
+        if entry.get() == "":
+            entry.insert(0, text)
+            entry.configure(text_color="gray")
+
+    entry.bind("<FocusIn>", focus_in)
+    entry.bind("<FocusOut>", focus_out)
 
 if __name__ == "__main__":
     app = App()

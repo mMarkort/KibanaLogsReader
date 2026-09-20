@@ -3,14 +3,19 @@ from pathlib import Path
 import sys
 
 def get_config_path():
-    if getattr(sys, "frozen", False):
-        # Running from EXE
-        base_dir = Path(sys.executable).resolve().parent
-    else:
-        # Running from .py
-        base_dir = Path(__file__).resolve().parent.parent
+    #base_dir = Path(__file__).resolve().parent
 
-    return base_dir / "Settings" / "config.json"
+    if getattr(sys, "frozen", False):
+    # Running as EXE
+        BASE_DIR = Path(sys.executable).resolve().parent
+    else:
+    # Running as Python
+        BASE_DIR = Path(__file__).resolve().parent.parent
+
+    CONFIG_FILE = BASE_DIR / "Settings" / "config.json"
+
+    print(CONFIG_FILE)
+    return CONFIG_FILE
 
 
 CONFIG_FILE = get_config_path()

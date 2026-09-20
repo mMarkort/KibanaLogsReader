@@ -1,46 +1,32 @@
 import requests
 import urllib3
+import customtkinter as ctk
 import tkinter as tk
 import Settings.Settingsback as Settingsback
+import main2
 
-class FindAppVersionModel(tk.Frame):
+class SettingsForm(tk.Frame):
     def __init__(self, parent, show_form, auth):
         super().__init__(parent)
+        self.auth = auth
+        self.show_form = show_form
 
-        tk.Label(
-            self,
-            text="Type method name and subID",
-            font=("Arial", 24)
-        ).pack(pady=30)
+        ctk.CTkLabel(self, text="SETTINGS", font=("Arial", 24), text_color="black").pack(pady=30)
 
-        self.entry1 = tk.Entry(self, width=40)
-        self.entry1.pack(pady=10)
-
-        self.entry2 = tk.Entry(self, width=40)
+        self.Url = ctk.CTkEntry(self, width=300, fg_color="white")
+        self.Url.pack(pady=10)
+        main2.add_placeholder(self.Url, "Change URL")
+        
+        self.entry2 = ctk.CTkEntry(self, width=300, fg_color="white")
         self.entry2.pack(pady=10)
+        main2.add_placeholder(self.entry2, "")
         
 
-        tk.Button(
-            self,
-            text="Search",
-            command=self.open_text_window
-        ).pack(pady=10)
+        ctk.CTkButton(self, text="Apply", width=200, font=("Arial", 16), state="disabled").pack(pady=10)
+        ctk.CTkButton(self, text="Back", width=200, font=("Arial", 16), command=lambda: show_form("home")).pack(pady=10)
+        ctk.CTkButton(self, text="Log Out", width=200,  font=("Arial", 16), fg_color="red", text_color="black", command=self.on_click).pack(pady=10)
 
-        tk.Button(
-            self,
-            text="Back",
-            command=lambda: show_form("home")
-        ).pack(pady=10)
-
-    def open_text_window(self):
-        METHOD = self.entry1.get()
-        USERNAME = self.entry2.get()
-        text = findAppVback.findAppVersion(main2.KIBANA_URL, main2.KIBANA_USERNAME, main2.KIBANA_PASSWORD, METHOD, USERNAME, main2.url)
-        window = tk.Toplevel()
-        window.title("Text")
-        window.geometry("700x500")
-
-        text_box = tk.Text(window, wrap="word")
-        text_box.pack(fill="both", expand=True, padx=10, pady=10)
-
-        text_box.insert("1.0", text)
+    def on_click(self):
+        Settingsback.save_config("", "", "", "False")
+        self.auth.logout()
+        self.show_form("auth")
